@@ -1,24 +1,21 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { ShoppingCart, User, LogOut, UtensilsCrossed } from 'lucide-react';
+import { usePathname, useRouter } from 'next/navigation';
+import { ShoppingCart, User, LogOut, UtensilsCrossed, ChefHat, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useEffect, useState } from 'react';
-import { User as UserType } from '@/types';
+import { authClient, useSession } from '@/lib/auth-client';
+import { toast } from 'sonner';
 
 export const Navbar = () => {
   const pathname = usePathname();
-  const [user, setUser] = useState<UserType | null>(null);
+  const router = useRouter();
+  const { data: session, isPending, refetch } = useSession();
   const [cartCount, setCartCount] = useState(0);
 
   useEffect(() => {
-    const userStr = localStorage.getItem('user');
-    if (userStr) {
-      setUser(JSON.parse(userStr));
-    }
-
     const cart = localStorage.getItem('cart');
     if (cart) {
       const items = JSON.parse(cart);
@@ -46,10 +43,18 @@ export const Navbar = () => {
     };
   }, []);
 
-  const handleLogout = () => {
-    localStorage.removeItem('user');
-    setUser(null);
-    window.location.href = '/';
+  const handleLogout = async () => {
+    const { error } = await authClient.signOut();
+    
+    if (error?.code) {
+      toast.error('Logout failed. Please try again.');
+      return;
+    }
+    
+    localStorage.removeItem('bearer_token');
+    refetch();
+    toast.success('Logged out successfully');
+    router.push('/');
   };
 
   return (
@@ -70,7 +75,7 @@ export const Navbar = () => {
             Menu
           </Link>
           
-          {user && (
+          {session?.user && (
             <Link 
               href="/orders" 
               className={`text-sm font-medium transition-colors hover:text-primary ${
@@ -80,6 +85,26 @@ export const Navbar = () => {
               Orders
             </Link>
           )}
+
+          <Link 
+            href="/kitchen" 
+            className={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary ${
+              pathname === '/kitchen' ? 'text-primary' : 'text-muted-foreground'
+            }`}
+          >
+            <ChefHat className="h-4 w-4" />
+            Kitchen
+          </Link>
+
+          <Link 
+            href="/admin" 
+            className={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary ${
+              pathname === '/admin' ? 'text-primary' : 'text-muted-foreground'
+            }`}
+          >
+            <Shield className="h-4 w-4" />
+            Admin
+          </Link>
 
           <Link href="/checkout" className="relative">
             <Button variant="ghost" size="icon">
@@ -92,11 +117,13 @@ export const Navbar = () => {
             </Button>
           </Link>
 
-          {user ? (
+          {isPending ? (
+            <div className="h-9 w-20 bg-muted animate-pulse rounded-md" />
+          ) : session?.user ? (
             <div className="flex items-center gap-2">
               <div className="flex items-center gap-2 rounded-lg bg-muted px-3 py-1.5">
                 <User className="h-4 w-4" />
-                <span className="text-sm font-medium">{user.name}</span>
+                <span className="text-sm font-medium">{session.user.name}</span>
               </div>
               <Button variant="ghost" size="icon" onClick={handleLogout}>
                 <LogOut className="h-5 w-5" />
