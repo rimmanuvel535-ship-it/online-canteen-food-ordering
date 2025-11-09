@@ -1,3 +1,5 @@
+/* Updated: 2025-11-09T06:29:29.148Z */
+/* Updated: 2025-11-09T04:43:45.546Z */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -126,9 +128,9 @@
     font-weight: 700;
   }
   
-  /* Canteen gradient background */
+  /* Kitchen room gradient background */
   .canteen-gradient {
-    background: linear-gradient(135deg, #FF9A9E 0%, #FAD0C4 100%);
+    background: linear-gradient(135deg, #D4A574 0%, #F5E6D3 50%, #E8D5C4 100%);
   }
   
   /* Hover bounce animation */
@@ -153,7 +155,7 @@
   
   /* Glow effect */
   .glow-shadow:hover {
-    box-shadow: 0 0 20px rgba(255, 111, 97, 0.5);
+    box-shadow: 0 0 20px rgba(139, 90, 43, 0.4);
   }
 }
 
