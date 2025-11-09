@@ -43,7 +43,7 @@ export default function Navbar() {
               <span className="text-white font-bold text-xl">C</span>
             </div>
             <span className="text-2xl font-bold text-[#222222] font-['Poppins']">
-              Canteen Online
+              Mad Rascles
             </span>
           </Link>
 
