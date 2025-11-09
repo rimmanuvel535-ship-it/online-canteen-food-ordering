@@ -79,8 +79,8 @@ export default function AdminPage() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    // Password: admin123
-    if (password === 'admin123') {
+    // Password: admin
+    if (password === 'admin') {
       localStorage.setItem('admin_auth', 'true');
       setIsAuthenticated(true);
       toast.success('Welcome to Admin Dashboard');

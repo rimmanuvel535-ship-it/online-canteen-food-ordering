@@ -71,8 +71,8 @@ export default function KitchenPage() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    // Password: kitchen123
-    if (password === 'kitchen123') {
+    // Password: kitchen
+    if (password === 'kitchen') {
       localStorage.setItem('kitchen_auth', 'true');
       setIsAuthenticated(true);
       toast.success('Welcome to Kitchen Dashboard');
