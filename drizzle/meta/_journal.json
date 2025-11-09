@@ -8,6 +8,13 @@
       "when": 1762663595891,
       "tag": "0000_past_radioactive_man",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1762664741371,
+      "tag": "0001_cynical_hercules",
+      "breakpoints": true
     }
   ]
 }
