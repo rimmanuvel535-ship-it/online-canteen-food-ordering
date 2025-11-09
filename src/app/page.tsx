@@ -40,9 +40,19 @@ export default function Home() {
               <span className="font-semibold text-gray-800">Fresh & Delicious Food Delivered Fast</span>
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-lg logo-pulse">
-              Mad Rascles
-            </h1>
+            <div className="flex items-center justify-center gap-4 mb-6">
+              <div className="relative w-24 h-24 md:w-32 md:h-32">
+                <Image
+                  src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/58042079-58a7-40f1-8718-746575bfb1f7/generated_images/friendly-cartoon-cooking-chef-character--62c5240a-20251109070022.jpg"
+                  alt="Chef Mascot"
+                  fill
+                  className="object-contain animate-bounce"
+                />
+              </div>
+              <h1 className="text-5xl md:text-7xl font-bold text-white drop-shadow-lg logo-pulse">
+                Mad Rascles
+              </h1>
+            </div>
             
             <p className="text-xl md:text-2xl text-white/95 mb-8 font-medium drop-shadow">
               Order your favorite meals from our canteen. Quick, tasty, and affordable!
