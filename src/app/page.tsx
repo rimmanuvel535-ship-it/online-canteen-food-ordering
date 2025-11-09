@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -126,6 +127,14 @@ export default function Home() {
                 key={item!.id} 
                 className="overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-105 border-2 hover:border-[#FF6F61] rounded-2xl"
               >
+                <div className="relative w-full h-48 overflow-hidden">
+                  <Image
+                    src={item!.image || '/placeholder-food.jpg'}
+                    alt={item!.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
                 <CardHeader className="bg-gradient-to-br from-[#FF9A9E] to-[#FAD0C4] pb-3">
                   <div className="flex items-start justify-between">
                     <CardTitle className="text-lg text-[#222222]">{item!.name}</CardTitle>
@@ -190,6 +199,15 @@ export default function Home() {
                   <Badge className="bg-gradient-to-r from-[#FFC107] to-[#FF9800] text-[#222222] font-bold text-sm px-3 py-1 shadow-lg">
                     ⭐ {combo.offer}
                   </Badge>
+                </div>
+                
+                <div className="relative w-full h-48 overflow-hidden">
+                  <Image
+                    src={combo.image || '/placeholder-food.jpg'}
+                    alt={combo.name}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
                 
                 <CardHeader className="bg-gradient-to-br from-[#FFD54F] to-[#FFC107] pt-6">
