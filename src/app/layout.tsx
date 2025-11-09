@@ -4,11 +4,11 @@ import VisualEditsMessenger from "../visual-edits/VisualEditsMessenger";
 import ErrorReporter from "@/components/ErrorReporter";
 import Script from "next/script";
 import { Toaster } from "@/components/ui/sonner";
-import { Navbar } from "@/components/Navbar";
+import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
-  title: "Mad Rascles - Online Food Ordering",
-  description: "Order your favorite meals from Mad Rascles canteen. Quick, tasty, and affordable!",
+  title: "Canteen Online - Food Ordering",
+  description: "Order delicious food from our canteen",
 };
 
 export default function RootLayout({

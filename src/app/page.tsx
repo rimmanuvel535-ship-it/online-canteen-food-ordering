@@ -41,7 +41,7 @@ export default function Home() {
             </div>
             
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-lg logo-pulse">
-              Mad Rascles
+              Canteen Online
             </h1>
             
             <p className="text-xl md:text-2xl text-white/95 mb-8 font-medium drop-shadow">
